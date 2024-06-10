@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fadeIn {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full fadeIn">
+        <h1 id="bookTitle" class="text-3xl font-bold mb-4 text-center text-gray-800">Book Title</h1>
+        <div class="flex flex-col items-center space-y-4">
+            <img id="bookImage" class="w-32 h-32 rounded-lg shadow-md" alt="Book Cover">
+            <p id="bookAuthor" class="text-lg text-gray-700">Author: </p>
+            <p id="bookGenre" class="text-lg text-gray-700">Genre: </p>
+            <p id="bookRating" class="text-lg text-gray-700">Rating: </p>
+            <a id="googleSearchLink" href="#" target="_blank"
+                class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md text-center hover:bg-indigo-600 transition duration-300 ease-in-out transform hover:scale-105">Search
+                or Buy Book</a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const book = JSON.parse(localStorage.getItem('selectedBook'));
+            if (book) {
+                document.getElementById('bookTitle').innerText = book.title;
+                document.getElementById('bookAuthor').innerText = `Author: ${book.author}`;
+                document.getElementById('bookGenre').innerText = `Genre: ${book.genre}`;
+                document.getElementById('bookRating').innerText = `Rating: ${book.rating}`;
+                document.getElementById('bookImage').src = book.image;
+                document.getElementById('bookImage').alt = `${book.title} Cover`;
+                document.getElementById('googleSearchLink').href = `https://www.google.com/search?q=${encodeURIComponent(book.title + ' ' + book.author)}`;
+            } else {
+                document.getElementById('bookTitle').innerText = "No Book Selected";
+            }
+        });
+    </script>
+</body>
+
+</html>

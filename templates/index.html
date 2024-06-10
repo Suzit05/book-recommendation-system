@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fadeInUp {
+            animation-name: fadeInUp;
+            animation-duration: 0.5s;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+        <h1 class="text-3xl font-bold mb-4 text-center text-gray-800">Book Recommendation</h1>
+        <form id="bookForm" class="space-y-4">
+            <div>
+                <label for="bookName" class="block text-sm font-medium text-gray-700">Enter Book Name</label>
+                <input type="text" id="bookName"
+                    class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="e.g., Harry Potter">
+            </div>
+            <button type="button" id="getRecommendations"
+                class="w-full bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 transition duration-300 ease-in-out transform hover:scale-105">Get
+                Recommendations</button>
+        </form>
+        <div id="recommendations" class="mt-6 space-y-4"></div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
